@@ -58,6 +58,7 @@ const Navbar = () => {
               onMouseEnter={toggleDropdown}
               onMouseLeave={closeDropdown}
               style={{
+                color: isScrolled ? "#496F88" : "#FFFFFF",
                 fontWeight: "bold",
               }}
             >
@@ -74,8 +75,10 @@ const Navbar = () => {
 
             <li>
               <a
+                id="borderHover"
                 style={{
                   textDecoration: "none",
+                  color: isScrolled ? "#496F88" : "#FFFFFF",
                   fontWeight: "bold",
                 }}
                 href="/ai-software"
@@ -84,8 +87,8 @@ const Navbar = () => {
                 AI Software
               </a>
             </li>
-            <li>Blog</li>
-            <li>Contact Us</li>
+            <li id="borderHover1">Blog</li>
+            <li id="borderHover2">Contact Us</li>
           </ul>
         </nav>
       </header>
@@ -119,3 +122,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+

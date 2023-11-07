@@ -56,6 +56,7 @@ body {
   font-weight: 600;
 }
 
+/* For Background Image */
 .home-bg-img {
   width: 100vw;
   height: 100vh;
@@ -122,6 +123,8 @@ body {
   margin-bottom: 2rem;
 }
 
+/* ------------------------------------------- */
+
 .App {
   text-align: center;
 }
@@ -160,8 +163,9 @@ body {
     transform: rotate(360deg);
   }
 }
-
 /* ------------------------------------------------------------------------- */
+
+/* for nav */
 .nav-item-dropdown-content {
   display: none;
   position: absolute;
@@ -186,6 +190,10 @@ body {
   color: #496f88;
 }
 
+.nav-item-dropdown-content a:hover {
+  border-bottom: 2px solid #282c34;
+  transition: border-bottom 1s ease-in;
+}
 
 .nav-item-dropdown-content a:hover {
   background-color: #ddd;
@@ -193,6 +201,23 @@ body {
 
 .nav-item-dropdown {
   position: relative;
+}
+
+#borderHover:hover {
+  border-bottom: 2px solid #282c34;
+  transition: border-bottom 1s ease-in-out;
+}
+
+#borderHover1:hover{
+  border-bottom: 2px solid #282c34;
+  transition: border-bottom 1s ease-in-out;
+  
+}
+
+#borderHover2:hover{
+  border-bottom: 2px solid #282c34;
+  transition: border-bottom 1s ease-in-out;
+  
 }
 
 .nav-item-dropdown-content {
