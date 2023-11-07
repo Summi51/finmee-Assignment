@@ -4,7 +4,7 @@ Welcome to my GitHub home page project! This project is a simple React-based web
 
 ## Preview
 
-You can see a live demo of the project [here](https://ntwist-lgivvv70w-summi51.vercel.app/).
+You can see a live demo of the project [here](https://6549ee76277dfe6596027803--cheery-sfogliatella-c4223f.netlify.app/).
 
 ## Features
 
