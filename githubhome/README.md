@@ -1,4 +1,4 @@
-# My Home Page
+# GitHub Home Page
 
 Welcome to my GitHub home page project! This project is a simple React-based webpage with a navigation bar and some cool features.
 
@@ -17,8 +17,7 @@ You can see a live demo of the project [here](https://6549ee76277dfe6596027803--
 
 The background of the page is styled with a beautiful image.
 
-![Background Image](![bgImage](https://github.com/Summi51/finmee-Assignment/assets/73363392/3c6e1739-84d0-484f-bcbf-bd65448f12c9)
-)
+![bgImage](https://github.com/Summi51/finmee-Assignment/assets/73363392/a71bec6d-04c3-4c2f-ac89-d46220891afd)
 
 ## Animation
 
@@ -35,3 +34,7 @@ The home page features animations, including the following:
    git clone https://github.com/Summi51/finmee-Assignment
    npm install
    npm start
+
+## Project Screen Shot
+
+![ProjectHome](https://github.com/Summi51/finmee-Assignment/assets/73363392/0f75d10f-a4ac-4102-93b6-239f813d6280)
