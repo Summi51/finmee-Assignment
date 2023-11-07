@@ -38,6 +38,10 @@ The home page features animations, including the following:
    npm install
    npm start
 
+## Project Screen Shot
+
+![bgImage](https://github.com/Summi51/finmee-Assignment/assets/73363392/a71bec6d-04c3-4c2f-ac89-d46220891afd)
+
 
 //===================================================================================
 
