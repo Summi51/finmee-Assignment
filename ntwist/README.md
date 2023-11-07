@@ -11,7 +11,7 @@ This project is a React-based clone of the NTWIST website's home page. It includ
 
 ## Demo
 
-You can see a live demo of the project [here](https://ntwist-orcin.vercel.app/).
+You can see a live demo of the project [here](https://ntwist-lgivvv70w-summi51.vercel.app/).
 
 ## Features
 
