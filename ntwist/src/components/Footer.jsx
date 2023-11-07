@@ -1,66 +1,68 @@
-import React from 'react';
-import { Box, Flex, Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react';
+import React from "react";
+import { FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 
 const Footer = () => {
+  const footerStyle = {
+    backgroundColor: "rgb(8, 21, 40)",
+    padding: "50px",
+    position: "relative",
+  };
+
+  const footerContentStyle = {
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px",
+    color: "#FFFFFF",
+    fontStyle: "normal",
+    fontFamily: "Roboto, sans-serif",
+    lineHeight: "28px",
+    cursor: "pointer",
+  };
+
+  const addressStyle = {
+    color: "#6f7f92",
+    fontSize: "17px",
+    paddingTop: "20px",
+    textAlign: "center",
+  };
+
+  const socialIconsStyle = {
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+    margin: "20px",
+    fontSize: "30px",
+    color: "white",
+    cursor: "pointer",
+  };
+
   return (
-    <Box marginTop={'50'} bg="#FB8724" py={8}>
-      <Flex justifyContent="center">
-        <Box w="33%" px={4}>
-          <Heading color="#fff" fontWeight="bold" mb={4} fontSize="xl">
-            About Us
-          </Heading>
-          <Text color="#fff" fontSize="md">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </Text>
-        </Box>
-        <Box w="33%" px={4}>
-          <Heading color="#fff" fontWeight="bold" mb={4} fontSize="xl">
-            Quick Links
-          </Heading>
-          <UnorderedList listStyleType="none" padding={0}>
-            <ListItem>
-              <a href="/" style={{ color: '#fff', textDecoration: 'none' }}>
-                Home
-              </a>
-            </ListItem>
-            <ListItem>
-              <a href="/about" style={{ color: '#fff', textDecoration: 'none' }}>
-                About
-              </a>
-            </ListItem>
-            <ListItem>
-              <a href="/menu" style={{ color: '#fff', textDecoration: 'none' }}>
-                Menu
-              </a>
-            </ListItem>
-            <ListItem>
-              <a href="/contact" style={{ color: '#fff', textDecoration: 'none' }}>
-                Contact
-              </a>
-            </ListItem>
-          </UnorderedList>
-        </Box>
-        <Box w="33%" px={4}>
-          <Heading color="#fff" fontWeight="bold" mb={4} fontSize="xl">
-            Contact Us
-          </Heading>
-          <Text color="#fff" fontSize="md">
-            123 Street, City, Country
-          </Text>
-          <Text color="#fff" fontSize="md">
-            Phone: +1 123-456-7890
-          </Text>
-          <Text color="#fff" fontSize="md">
-            Email: info@example.com
-          </Text>
-        </Box>
-      </Flex>
-      <Box textAlign="center" mt={8}>
-        <Text color="#fff" fontSize="sm" fontWeight="bold">
-          &copy; 2023 Your Restaurant. All rights reserved.
-        </Text>
-      </Box>
-    </Box>
+    <div style={footerStyle}>
+      <img
+        width={"11%"}
+        src="https://ntwist.com/wp-content/uploads/2021/12/ntwistlight.png"
+        alt="img"
+      />
+      <div style={footerContentStyle}>
+        <h3>Home</h3>
+        <h3>About Us</h3>
+        <h3>Contact Us</h3>
+        <h3>Privacy Policy</h3>
+        <h3>Sitemap</h3>
+      </div>
+      <div style={addressStyle}>
+        9650 20 Ave NW, Edmonton, AB, T6N 1G1, Canada
+      </div>
+      <div style={socialIconsStyle}>
+        <div>
+          <FaTwitterSquare />
+        </div>
+        <div>
+          <FaLinkedin />
+        </div>
+      </div>
+      <div>© 2022. Ntwist Inc.</div>
+    </div>
   );
 };
 

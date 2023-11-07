@@ -1,3 +1,127 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+
+.header-section {
+  width: 95vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  position: fixed;
+  top: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.header-section .logo {
+  height: 3.5rem;
+}
+
+.before-scroll-img {
+  display: block;
+}
+
+.after-scroll-img {
+  display: none;
+}
+
+.nav-active {
+  background-color: #fff;
+}
+
+.nav-active .nav-links li {
+  color: #496f88;
+}
+
+.nav-active .before-scroll-img {
+  display: none;
+}
+.nav-active .after-scroll-img {
+  display: block;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 2.3rem;
+}
+
+.nav-links li {
+  list-style: none;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: #fff;
+  font-weight: 600;
+}
+
+.home-bg-img {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://ntwist.com/wp-content/uploads/2023/01/home-image-bg-v6.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.home-banner {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  margin: auto;
+  align-items: center;
+}
+
+.home-banner > div:nth-child(1) {
+  width: 43.5%;
+  padding-left: 3rem;
+}
+
+.home-banner > div:nth-child(2) {
+  width: 55%;
+}
+
+.home-banner-right img {
+  width: 90%;
+  margin-top: 50px;
+}
+
+.home-banner-left h2 {
+  font-size: 3rem;
+  color: #fff;
+  line-height: 0.95;
+}
+
+.container {
+  width: 90vw;
+  display: flex;
+  margin: auto;
+  height: 60vh;
+  margin-top: 3rem;
+}
+
+.container > div {
+  height: 55vh;
+  width: 47%;
+  margin: auto;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.text-container h1 {
+  color: #ff3a2d;
+  font-size: 43px;
+  font-weight: 500;
+}
+
+.text-container p {
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
 .App {
   text-align: center;
 }
@@ -36,3 +160,52 @@
     transform: rotate(360deg);
   }
 }
+
+/* ------------------------------------------------------------------------- */
+.nav-item-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 300px;
+  color: #496f88;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.nav-item-dropdown.open .nav-item-dropdown-content {
+  display: block;
+  top: 40px;
+  left: 0;
+}
+
+.nav-item-dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  color: #496f88;
+}
+
+
+.nav-item-dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-item-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.nav-item-dropdown:hover .nav-item-dropdown-content {
+  display: block;
+}
+

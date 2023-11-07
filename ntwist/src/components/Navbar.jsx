@@ -1,251 +1,120 @@
-import {
-  Box,
-  Center,
-  Flex,
-  List,
-  ListItem,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { GoogleLogin } from "@react-oauth/google";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
-import { useContext, useEffect } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import { FaLock, FaUnlock } from "react-icons/fa";
-import { MdOutlineFavorite } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
-import { ProfileContext } from "../profileContext/profileContext";
+import React, { useEffect, useState } from "react";
+import { AiFillCaretDown } from "react-icons/ai";
+import Button from "../page/Button";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const data = JSON.parse(localStorage.getItem("oath"));
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { loginCredentials, setLoginCredentials } = useContext(ProfileContext);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const loginSuccess = (res) => {
-    const decode = jwt_decode(res.credential);
-    localStorage.setItem("oath", JSON.stringify(decode));
-    axios.post(`https://recipe-backend-3.vercel.app/users`, decode).then((res) => {
-      navigate("/");
-      setLoginCredentials(decode);
-      onClose();
-    });
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const loginError = (res) => {
-    console.log(res);
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
   };
 
   useEffect(() => {
-    data && data.name && setLoginCredentials(data);
+    const navbar = document.querySelector(".header-section");
+    window.onscroll = () => {
+      handleScroll();
+      if (window.scrollY > 50) {
+        navbar.classList.add("nav-active");
+      } else {
+        navbar.classList.remove("nav-active");
+      }
+    };
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("oath");
-    setLoginCredentials(null);
-  };
-
   return (
-    <Box>
-      <Modal   closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay  />
-        <ModalContent width={'70%'} >
-          <ModalHeader>Account</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody  pb={6}>
-            <Center>
-              <GoogleLogin onSuccess={loginSuccess} onError={loginError} />
-            </Center>
-          </ModalBody>
-          <ModalFooter></ModalFooter>
-        </ModalContent>
-      </Modal>
-
-
-      <Flex
-        bg="#FB8724"
-        p="1%"
-        color="black"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Menu display={["block", "block", "none", "none"]}>
-          <MenuButton display={["block", "block", "none", "none"]}>
-            <Box display={["block", "block", "none", "none"]}>
-              <AiOutlineMenu
-                display={["block", "block", "none", "none"]}
-                fontWeight={"bold"}
-                fontSize={"30px"}
-              />
-            </Box>
-          </MenuButton>
-
-          <MenuList
-            display={["block", "block", "none", "none"]}
-            position={"relative"}
-            zIndex={"999"}
-          >
-            <MenuItem>
-              <Box>
-                <Link href="/" fontWeight={"medium"} color={"gray"}>
-                  Home
-                </Link>
-              </Box>
-            </MenuItem>
-            <MenuItem>
-              <Box>
-                <Link fontWeight={"medium"} color={"gray"}>
-                  Contact
-                </Link>
-              </Box>
-            </MenuItem>
-            <MenuItem>
-              <Box>
-                <Link color={"#8C67E6"} fontWeight={"medium"}>
-                  About us
-                </Link>
-              </Box>
-            </MenuItem>
-          </MenuList>
-        </Menu>
-
-
-
-        <Link to="/" textDecoration="none">
-          <Text
-            display={["none", "none", "block", "block"]}
-            fontFamily="Brygada 1918 , serif"
-            fontStyle="italic"
-            as="h1"
-            fontWeight={"700"}
-            fontSize="1.8rem"
-            color="#fff"
-          >
-            Recipe Delights
-          </Text>
-        </Link>
-
-        <List
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          margin={0}
-          padding={0}
-        >
-          {data ? (
-            <>
-              <ListItem margin="0 10px">
-                <Link
-                  to=""
-                  textDecoration="none"
-                  color="#fff"
-                  fontWeight="bold"
-                >
-                  <Text
-                    textDecoration="none"
-                    color="#fff"
-                    fontWeight="bold"
-                    display={["block", "block", "block", "block"]}
-                  >
-                    {data?.given_name}
-                  </Text>
-                </Link>
-              </ListItem>
-            </>
-          ) : (
-            ""
-          )}
-
-          <ListItem margin="0 10px">
-            <Link
-              to="/fav"
-              textDecoration="none"
-              color="#fff"
-              fontWeight="bold"
+    <div className={`home-bg-img ${isScrolled ? "scrolled" : ""}`}>
+      <header className={`header-section ${isScrolled ? "scrolled" : ""}`}>
+        <img
+          className="logo before-scroll-img"
+          src="https://ntwist.com/wp-content/uploads/2021/12/ntwistlight.png"
+          alt="logo"
+        />
+        <img
+          className="logo after-scroll-img"
+          src="https://ntwist.com/wp-content/uploads/2021/12/ntwist-logo-dark.png"
+          alt="logo"
+        />
+        <nav className="navbar">
+          <ul className="nav-links">
+            <li style={{ borderBottom: "1px solid black" }}>Home</li>
+            <div
+              className={`nav-item-dropdown nav-item ${
+                isDropdownOpen ? "open" : ""
+              }`}
+              onClick={toggleDropdown}
+              onMouseEnter={toggleDropdown}
+              onMouseLeave={closeDropdown}
+              style={{
+                fontWeight: "bold",
+              }}
             >
-              <Flex>
-                <Text
-                  textDecoration="none"
-                  color="#fff"
-                  fontWeight="bold"
-                  display={["block", "block", "block", "block"]}
-                >
-                  Favorite
-                </Text>
-                <Box
-                  paddingTop="6px"
-                  pl={1}
-                  color="#fff"
-                  display={["block", "block", "block", "block"]}
-                >
-                  <MdOutlineFavorite />
-                </Box>
-              </Flex>
-            </Link>
-          </ListItem>
-          {!data ? (
-            <ListItem margin="0 10px" onClick={onOpen}>
-              <Flex>
-                <Text
-                  htmlFor={"googleauth"}
-                  textDecoration="none"
-                  color="#fff"
-                  fontWeight="bold"
-                  display={["block", "block", "block", "block"]}
-                  cursor="pointer"
-                >
-                  Login
-                </Text>
-                <Box
-                  paddingTop="6px"
-                  pl={1}
-                  color="#fff"
-                  display={["block", "block", "block", "block"]}
-                >
-                  <FaUnlock />
-                </Box>
-              </Flex>
-            </ListItem>
-          ) : (
-            <ListItem margin="0 10px" onClick={logout}>
-              <Flex>
-                <Text
-                  htmlFor={"googleauth"}
-                  textDecoration="none"
-                  color="#fff"
-                  fontWeight="bold"
-                  cursor="pointer"
-                  display={["block", "block", "block", "block"]}
-                >
-                  Logout
-                </Text>
-                <Box
-                  paddingTop="5px"
-                  pl={1}
-                  color="#fff"
-                  display={["block", "block", "block", "block"]}
-                >
-                  <FaLock />
-                </Box>
-              </Flex>
-            </ListItem>
-          )}
-          <ListItem id="googleauth" display={"none"}></ListItem>
-        </List>
-      </Flex>
-    </Box>
+              Industries <AiFillCaretDown />
+              <div className="nav-item-dropdown-content">
+                <a href="/project/sustainability-assistant">Sustainability</a>
+                <a href="/metal-mining">Mineral Processing</a>
+                <a href="/mine-to-mill-to-mine-optimization">
+                  Mine-To-Mill-To-Mine Optimization
+                </a>
+                <a href="/oil-gas">Oil & Gas</a>
+              </div>
+            </div>
+
+            <li>
+              <a
+                style={{
+                  textDecoration: "none",
+                  fontWeight: "bold",
+                }}
+                href="/ai-software"
+                className={isScrolled ? "scrolled" : ""}
+              >
+                AI Software
+              </a>
+            </li>
+            <li>Blog</li>
+            <li>Contact Us</li>
+          </ul>
+        </nav>
+      </header>
+      <div className="home-banner">
+        <div className="home-banner-left">
+          <h2>
+            Data-powered solutions
+            <br />
+            for Industrial Excellence
+          </h2>
+          <Button
+            text={"Read More"}
+            textColor={"#fff"}
+            bg={"#007aff"}
+            fontSize={"0.9rem"}
+            pl={"40px"}
+            pr={"40px"}
+            pt={"11px"}
+            pb={"11px"}
+          />
+        </div>
+        <div className="home-banner-right">
+          <img
+            src="https://ntwist.com/wp-content/uploads/2023/01/home-image-icons-v6.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 
